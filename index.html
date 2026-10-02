@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Elvin Support Services™ — Ticket Closed</title>
+
+  <!-- Replace YOUR_PUBLIC_URL after publishing (GitHub Pages, Netlify, etc.) -->
+  <meta property="og:title" content="Elvin Support Services™ — Ticket Closed" />
+  <meta property="og:description" content="השירות הושלם בהצלחה. נא לא לשכוח לדרג ⭐⭐⭐⭐⭐" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="YOUR_PUBLIC_URL/preview.jpg" />
+  <meta property="og:url" content="YOUR_PUBLIC_URL/" />
+  <meta name="theme-color" content="#f3f0e7" />
+
+  <style>
+    :root{
+      --paper:#f3f0e7;
+      --ink:#111;
+      --muted:#66645d;
+      --lime:#d9ff3f;
+      --pink:#ff5aa9;
+      --line:rgba(17,17,17,.22);
+      --card:rgba(255,255,255,.25);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0,0,0,.035) 0 1px, transparent 1.5px) 0 0/8px 8px,
+        linear-gradient(var(--paper),var(--paper));
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      min-height:100vh;
+    }
+    .wrap{
+      width:min(880px,100%);
+      margin:auto;
+      padding:24px 18px 40px;
+    }
+    .receipt{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding:18px 0 24px;
+    }
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:baseline;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin:4px 0 8px;
+      direction:ltr;
+    }
+    .brand strong{
+      font-size:clamp(38px,8vw,76px);
+      font-weight:900;
+      letter-spacing:-.05em;
+      line-height:.95;
+      background:linear-gradient(transparent 52%, var(--lime) 52% 93%, transparent 93%);
+      padding:0 .08em;
+    }
+    .brand span{font-size:12px;font-weight:700;align-self:flex-start;margin-top:4px}
+    h1{
+      text-align:center;
+      font-size:clamp(28px,6vw,58px);
+      line-height:1;
+      margin:14px 0 8px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      text-align:center;
+      font-size:clamp(18px,3.8vw,28px);
+      line-height:1.45;
+      margin:0 auto 22px;
+      max-width:680px;
+      font-weight:600;
+    }
+    .scribble{
+      color:var(--pink);
+      font-size:40px;
+      text-align:center;
+      transform:rotate(-6deg);
+      margin-top:-10px;
+      user-select:none;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:var(--card);
+      padding:18px;
+      box-shadow:0 10px 40px rgba(0,0,0,.04);
+      backdrop-filter:blur(1px);
+    }
+    .panel h2{
+      margin:0 0 6px;
+      font-size:clamp(22px,4vw,32px);
+    }
+    .tiny{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:14px;
+    }
+    .stars{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+      direction:ltr;
+      margin:14px 0 18px;
+    }
+    .star{
+      appearance:none;
+      border:1.5px solid var(--line);
+      background:transparent;
+      border-radius:18px;
+      min-height:72px;
+      font-size:40px;
+      cursor:pointer;
+      transition:.18s ease;
+      display:grid;
+      place-items:center;
+      color:var(--ink);
+    }
+    .star:hover,.star.active{
+      background:var(--lime);
+      transform:translateY(-2px) rotate(-1deg);
+      border-color:var(--ink);
+      box-shadow:0 8px 0 rgba(0,0,0,.07);
+    }
+    .labels{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+      direction:ltr;
+      text-align:center;
+      font-size:12px;
+      margin-top:-10px;
+      margin-bottom:22px;
+      color:var(--muted);
+    }
+    .section-title{
+      font-weight:800;
+      margin:14px 0 10px;
+      font-size:16px;
+    }
+    .checks{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .check{
+      border:1px solid var(--line);
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:700;
+      background:rgba(255,255,255,.24);
+      transition:.16s ease;
+      user-select:none;
+    }
+    .check input{display:none}
+    .check.selected{
+      background:var(--ink);
+      color:white;
+      transform:rotate(-1deg);
+    }
+    textarea{
+      width:100%;
+      min-height:84px;
+      margin-top:14px;
+      resize:vertical;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:13px 14px;
+      font:inherit;
+      background:rgba(255,255,255,.35);
+      color:var(--ink);
+      outline:none;
+    }
+    .submit{
+      width:100%;
+      border:0;
+      border-radius:18px;
+      margin-top:14px;
+      padding:15px 18px;
+      font-size:18px;
+      font-weight:900;
+      background:var(--lime);
+      color:var(--ink);
+      cursor:pointer;
+      box-shadow:0 8px 0 rgba(0,0,0,.11);
+      transition:.16s ease;
+    }
+    .submit:active{transform:translateY(3px);box-shadow:0 5px 0 rgba(0,0,0,.11)}
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-end;
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      direction:ltr;
+    }
+    .footer b{font-size:17px;letter-spacing:.03em}
+    .footer small{display:block;color:var(--muted);letter-spacing:.08em;margin-top:4px}
+    .barcode{
+      width:160px;height:42px;
+      background:repeating-linear-gradient(90deg,#111 0 2px,transparent 2px 4px,#111 4px 7px,transparent 7px 10px);
+      border-radius:2px;
+    }
+    .toast{
+      position:fixed;
+      left:50%; bottom:22px;
+      transform:translateX(-50%) translateY(20px);
+      opacity:0;
+      background:#111;color:#fff;
+      padding:11px 14px;border-radius:999px;
+      font-size:14px;
+      transition:.2s ease;
+      pointer-events:none;
+      z-index:10;
+      max-width:90vw;
+      text-align:center;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    @media(max-width:640px){
+      .stars{gap:6px}
+      .star{min-height:58px;font-size:32px;border-radius:14px}
+      .labels{font-size:10px;gap:6px}
+      .footer{align-items:center}
+      .barcode{width:120px;height:34px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="receipt">
+      <div class="brand">
+        <strong>Elvin Support Services</strong><span>™</span>
+      </div>
+
+      <h1>תודה שבחרת ב־</h1>
+      <p class="sub">
+        נשמח לעמוד לשירותך גם ב־<br>
+        שאלה / תמיכה / טיסה / קניה / התקלה הבאה 😎
+      </p>
+      <div class="scribble">♡</div>
+
+      <section class="panel" aria-label="Service rating">
+        <h2>נא לא לשכוח לדרג ⭐</h2>
+        <div class="tiny">איך הייתה החוויה?</div>
+
+        <div class="stars" id="stars" aria-label="בחר דירוג">
+          <button class="star" data-rating="1" aria-label="1 כוכב">☆</button>
+          <button class="star" data-rating="2" aria-label="2 כוכבים">☆</button>
+          <button class="star" data-rating="3" aria-label="3 כוכבים">☆</button>
+          <button class="star" data-rating="4" aria-label="4 כוכבים">☆</button>
+          <button class="star" data-rating="5" aria-label="5 כוכבים">☆</button>
+        </div>
+
+        <div class="labels">
+          <span>גרוע</span><span>פחות טוב</span><span>בסדר</span><span>טוב</span><span>מושלם!</span>
+        </div>
+
+        <div class="section-title">על מה הייתה התמיכה?</div>
+        <div class="checks" id="checks">
+          <label class="check"><input type="checkbox" value="שאלה">❓ שאלה</label>
+          <label class="check"><input type="checkbox" value="תמיכה">🔧 תמיכה</label>
+          <label class="check"><input type="checkbox" value="טיסה">✈️ טיסה</label>
+          <label class="check"><input type="checkbox" value="קניה">🛒 קניה</label>
+          <label class="check"><input type="checkbox" value="אחר">••• אחר</label>
+        </div>
+
+        <textarea id="comment" placeholder="הערה אופציונלית למוקד התמיכה…"></textarea>
+
+        <button class="submit" id="submit">שלח דירוג ב־WhatsApp ✓</button>
+      </section>
+
+      <footer class="footer">
+        <div>
+          <b>ELVIN SUPPORT SERVICES™</b>
+          <small>PEOPLE / CODE / SOLUTIONS / GOOD VIBES</small>
+        </div>
+        <div>
+          <div class="barcode" aria-hidden="true"></div>
+          <small style="text-align:center">THANK YOU! ♡</small>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+  // Option A: edit the number here after publishing:
+  const DEFAULT_WHATSAPP_NUMBER = "9725XXXXXXXX";
+
+  // Option B: no editing needed — use link like:
+  // https://YOUR_SITE/?phone=9725XXXXXXXX
+  const params = new URLSearchParams(location.search);
+  const phone = (params.get("phone") || DEFAULT_WHATSAPP_NUMBER).replace(/\D/g, "");
+
+  let rating = 5;
+  const stars = [...document.querySelectorAll(".star")];
+  const toast = document.getElementById("toast");
+
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(()=>toast.classList.remove("show"),2200);
+  }
+
+  function paintStars(){
+    stars.forEach((btn,i)=>{
+      const on = i < rating;
+      btn.classList.toggle("active", on);
+      btn.textContent = on ? "★" : "☆";
+    });
+  }
+  paintStars();
+
+  stars.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      rating = Number(btn.dataset.rating);
+      paintStars();
+    });
+  });
+
+  document.querySelectorAll(".check").forEach(label=>{
+    label.addEventListener("click",()=>{
+      setTimeout(()=>{
+        const input = label.querySelector("input");
+        label.classList.toggle("selected", input.checked);
+      },0);
+    });
+  });
+
+  document.getElementById("submit").addEventListener("click",()=>{
+    if(!/^\d{8,15}$/.test(phone) || phone.includes("X")){
+      showToast("צריך להוסיף מספר WhatsApp אמיתי בקובץ או בפרמטר ?phone=");
+      return;
+    }
+
+    const topics = [...document.querySelectorAll(".check input:checked")].map(x=>x.value);
+    const comment = document.getElementById("comment").value.trim();
+    const starsText = "⭐".repeat(rating);
+
+    let msg =
+`Elvin Support Services™
+SERVICE FEEDBACK
+
+Rating: ${starsText} (${rating}/5)
+${topics.length ? "Support: " + topics.join(" / ") : ""}${comment ? "\nComment: " + comment : ""}
+
+✅ Ticket officially closed.
+תודה על השירות 😎`;
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    window.location.href = url;
+  });
+</script>
+</body>
+</html>
