@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+  <title>Elvin Support Services™</title>
+  <meta name="description" content="Rate your Elvin Support Services™ experience ⭐⭐⭐⭐⭐" />
+  <meta name="theme-color" content="#f3efe4" />
+
+  <!-- WhatsApp / social preview -->
+  <meta property="og:title" content="Elvin Support Services™" />
+  <meta property="og:description" content="Your support ticket has been resolved. Rate your experience ⭐⭐⭐⭐⭐" />
+  <meta property="og:image" content="https://elvinshalmiev.github.io/ElvinSupport/preview.jpg" />
+  <meta property="og:url" content="https://elvinshalmiev.github.io/ElvinSupport/" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --paper:#f3efe4;
+      --ink:#111;
+      --muted:#6f6a61;
+      --line:rgba(17,17,17,.22);
+      --lime:#dfff38;
+      --pink:#ff61b0;
+      --card:rgba(255,255,255,.30);
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      min-height:100%;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 20% 10%,rgba(0,0,0,.035) 0 1px,transparent 1.3px) 0 0/8px 8px,
+        linear-gradient(var(--paper),var(--paper));
+    }
+
+    button,textarea,input{font:inherit}
+
+    .page{
+      width:min(900px,100%);
+      margin:0 auto;
+      padding:18px 16px 36px;
+    }
+
+    .topline{
+      border-top:1px solid var(--line);
+      padding-top:18px;
+    }
+
+    .language-bar{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-bottom:24px;
+      direction:ltr;
+    }
+
+    .lang-btn{
+      border:1.5px solid var(--line);
+      background:rgba(255,255,255,.22);
+      color:var(--ink);
+      border-radius:999px;
+      padding:8px 13px;
+      font-weight:900;
+      cursor:pointer;
+      min-width:58px;
+      transition:.15s ease;
+    }
+
+    .lang-btn.active{
+      background:var(--ink);
+      color:#fff;
+      border-color:var(--ink);
+    }
+
+    .brand{
+      direction:ltr;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:6px;
+      text-align:center;
+      margin:0 auto 22px;
+    }
+
+    .brand-main{
+      font-size:clamp(42px,8vw,80px);
+      line-height:.88;
+      letter-spacing:-.06em;
+      font-weight:950;
+      padding:0 .08em .08em;
+      background:linear-gradient(transparent 56%,var(--lime) 56% 95%,transparent 95%);
+    }
+
+    .tm{
+      font-size:12px;
+      font-weight:900;
+      margin-top:-5px;
+    }
+
+    h1{
+      margin:0;
+      text-align:center;
+      font-size:clamp(32px,6vw,60px);
+      line-height:1;
+      font-weight:950;
+      letter-spacing:-.035em;
+    }
+
+    .subtitle{
+      max-width:720px;
+      margin:14px auto 8px;
+      text-align:center;
+      font-size:clamp(18px,3.8vw,29px);
+      line-height:1.45;
+      font-weight:650;
+    }
+
+    .pinkline{
+      width:190px;
+      height:8px;
+      border-radius:99px;
+      background:var(--pink);
+      margin:13px auto 24px;
+      transform:rotate(-2deg);
+    }
+
+    .panel{
+      border:1.5px solid var(--line);
+      border-radius:26px;
+      background:var(--card);
+      padding:20px;
+      box-shadow:0 16px 48px rgba(0,0,0,.04);
+    }
+
+    .panel-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:2px;
+    }
+
+    .panel-title h2{
+      margin:0;
+      font-size:clamp(22px,4vw,34px);
+      font-weight:900;
+    }
+
+    .ticket{
+      direction:ltr;
+      white-space:nowrap;
+      color:var(--muted);
+      font-size:12px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    }
+
+    .muted{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:16px;
+    }
+
+    .stars{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:9px;
+      direction:ltr;
+    }
+
+    .star{
+      min-height:82px;
+      border:1.5px solid var(--line);
+      border-radius:18px;
+      background:transparent;
+      color:var(--ink);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      font-size:43px;
+      font-weight:900;
+      transition:.16s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .star.active{
+      background:var(--lime);
+      border-color:var(--ink);
+      transform:translateY(-2px);
+      box-shadow:0 7px 0 rgba(0,0,0,.1);
+    }
+
+    .star-labels{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:9px;
+      direction:ltr;
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      margin:9px 0 23px;
+    }
+
+    .divider{
+      height:1px;
+      background:var(--line);
+      margin:2px 0 18px;
+    }
+
+    .section-title{
+      margin:0 0 10px;
+      font-weight:900;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+    }
+
+    .chip{
+      border:1.5px solid var(--line);
+      border-radius:999px;
+      padding:10px 14px;
+      background:transparent;
+      font-weight:800;
+      cursor:pointer;
+      user-select:none;
+      transition:.15s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .chip input{display:none}
+
+    .chip.selected{
+      background:var(--ink);
+      color:#fff;
+    }
+
+    textarea{
+      width:100%;
+      min-height:90px;
+      margin-top:14px;
+      padding:13px 15px;
+      border:1.5px solid var(--line);
+      border-radius:17px;
+      background:rgba(255,255,255,.30);
+      color:var(--ink);
+      outline:none;
+      resize:vertical;
+    }
+
+    .submit{
+      width:100%;
+      margin-top:14px;
+      border:1.5px solid var(--ink);
+      border-radius:18px;
+      background:var(--lime);
+      color:var(--ink);
+      padding:15px 18px;
+      font-size:18px;
+      font-weight:950;
+      cursor:pointer;
+      box-shadow:0 7px 0 var(--ink);
+      transition:.14s ease;
+    }
+
+    .submit:active{
+      transform:translateY(4px);
+      box-shadow:0 3px 0 var(--ink);
+    }
+
+    .footer{
+      direction:ltr;
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      border-top:1px solid var(--line);
+      margin-top:24px;
+      padding-top:18px;
+    }
+
+    .footer strong{
+      font-size:17px;
+      letter-spacing:.03em;
+    }
+
+    .footer small{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      letter-spacing:.08em;
+    }
+
+    .barcode{
+      width:165px;
+      height:43px;
+      background:repeating-linear-gradient(
+        90deg,
+        #111 0 2px,
+        transparent 2px 5px,
+        #111 5px 8px,
+        transparent 8px 11px,
+        #111 11px 12px,
+        transparent 12px 15px
+      );
+    }
+
+    .love{
+      text-align:center;
+      font-size:12px;
+      letter-spacing:.18em;
+      margin-top:4px;
+    }
+
+    /* Final screen shown after returning from WhatsApp */
+    .done{
+      display:none;
+      min-height:100vh;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+      text-align:center;
+      background:
+        radial-gradient(circle at 20% 10%,rgba(0,0,0,.035) 0 1px,transparent 1.3px) 0 0/8px 8px,
+        linear-gradient(var(--paper),var(--paper));
+    }
+
+    .done.show{display:flex}
+    .done-inner{width:min(680px,100%)}
+
+    .done-brand{
+      direction:ltr;
+      font-size:clamp(26px,6vw,48px);
+      font-weight:950;
+      letter-spacing:-.04em;
+      margin-bottom:42px;
+    }
+
+    .big-heart{
+      font-size:clamp(140px,36vw,260px);
+      line-height:.8;
+      display:inline-block;
+      color:var(--pink);
+      animation:heartPop .55s cubic-bezier(.16,1,.3,1);
+      filter:drop-shadow(0 15px 0 rgba(0,0,0,.05));
+    }
+
+    .done h2{
+      margin:28px 0 7px;
+      font-size:clamp(30px,8vw,58px);
+      font-weight:950;
+      letter-spacing:-.035em;
+    }
+
+    .done p{
+      margin:0;
+      font-size:clamp(16px,4.2vw,22px);
+      line-height:1.5;
+      color:var(--muted);
+      font-weight:650;
+    }
+
+    .done-status{
+      display:inline-block;
+      margin-top:22px;
+      padding:9px 14px;
+      border:1.5px solid var(--ink);
+      border-radius:999px;
+      background:var(--lime);
+      direction:ltr;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-weight:900;
+      font-size:13px;
+    }
+
+    .again{
+      margin-top:28px;
+      border:0;
+      background:transparent;
+      text-decoration:underline;
+      color:var(--muted);
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    @keyframes heartPop{
+      0%{transform:scale(.35) rotate(-8deg);opacity:0}
+      65%{transform:scale(1.16) rotate(3deg);opacity:1}
+      100%{transform:scale(1) rotate(0);opacity:1}
+    }
+
+    @media(max-width:640px){
+      .page{padding:14px 12px 30px}
+      .panel{padding:15px;border-radius:21px}
+      .panel-title{flex-direction:column;align-items:flex-start}
+      .stars{gap:6px}
+      .star{min-height:62px;border-radius:14px;font-size:32px}
+      .star-labels{gap:6px;font-size:10px}
+      .footer{align-items:center}
+      .barcode{width:115px;height:34px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page" id="ratingPage">
+    <section class="topline">
+
+      <div class="language-bar" aria-label="Language">
+        <button class="lang-btn active" data-lang="he">עברית</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="ru">Русский</button>
+      </div>
+
+      <div class="brand">
+        <span class="brand-main">Elvin Support Services</span>
+        <span class="tm">™</span>
+      </div>
+
+      <h1 id="mainTitle">תודה שבחרת ב־</h1>
+
+      <p class="subtitle" id="subtitle">
+        נשמח לעמוד לשירותך גם בשאלה / תמיכה / טיסה / קניה / התקלה הבאה.
+      </p>
+
+      <div class="pinkline"></div>
+
+      <section class="panel">
+
+        <div class="panel-title">
+          <h2 id="ratingTitle">נא לא לשכוח לדרג ⭐</h2>
+          <span class="ticket">TICKET #ESS-CLOSED</span>
+        </div>
+
+        <div class="muted" id="ratingQuestion">איך הייתה החוויה?</div>
+
+        <div class="stars" id="stars">
+          <button class="star" data-rating="1">☆</button>
+          <button class="star" data-rating="2">☆</button>
+          <button class="star" data-rating="3">☆</button>
+          <button class="star" data-rating="4">☆</button>
+          <button class="star" data-rating="5">☆</button>
+        </div>
+
+        <div class="star-labels">
+          <span id="rate1">גרוע</span>
+          <span id="rate2">פחות טוב</span>
+          <span id="rate3">בסדר</span>
+          <span id="rate4">טוב</span>
+          <span id="rate5">מושלם!</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-title" id="supportTitle">על מה הייתה התמיכה?</div>
+
+        <div class="chips">
+          <label class="chip">
+            <input type="checkbox" data-topic="question">
+            <span id="topicQuestion">❓ שאלה</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" data-topic="support">
+            <span id="topicSupport">🔧 תמיכה</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" data-topic="flight">
+            <span id="topicFlight">✈️ טיסה</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" data-topic="purchase">
+            <span id="topicPurchase">🛒 קניה</span>
+          </label>
+
+          <label class="chip">
+            <input type="checkbox" data-topic="other">
+            <span id="topicOther">••• אחר</span>
+          </label>
+        </div>
+
+        <textarea id="comment" placeholder="הערה אופציונלית למוקד התמיכה…"></textarea>
+
+        <button class="submit" id="submit">
+          שלח ב־WhatsApp ✓
+        </button>
+
+      </section>
+
+      <footer class="footer">
+        <div>
+          <strong>ELVIN SUPPORT SERVICES™</strong>
+          <small>PEOPLE / CODE / SOLUTIONS / GOOD VIBES</small>
+        </div>
+
+        <div>
+          <div class="barcode"></div>
+          <div class="love">THANK YOU! ♡</div>
+        </div>
+      </footer>
+
+    </section>
+  </main>
+
+  <section class="done" id="donePage">
+    <div class="done-inner">
+      <div class="done-brand">Elvin Support Services™</div>
+
+      <div class="big-heart">♥</div>
+
+      <h2 id="doneTitle">תודה! ♥️</h2>
+
+      <p id="doneText">
+        ההודעה מוכנה ב־WhatsApp.<br>
+        נשמח לעמוד לשירותך גם בתקלה הבאה.
+      </p>
+
+      <div class="done-status">
+        STATUS: RESOLVED ✓
+      </div>
+
+      <br>
+
+      <button class="again" id="again">
+        דירוג חדש
+      </button>
+    </div>
+  </section>
+
+  <script>
+    /*
+      IMPORTANT:
+      This is the WhatsApp recipient number.
+      WhatsApp contacts do not need any extra setup — wa.me opens a direct chat
+      with this number. If the recipient is saved in contacts, WhatsApp will
+      normally display the saved contact name.
+    */
+    const WHATSAPP_NUMBER = "97254505566785";
+
+    const translations = {
+      he: {
+        dir: "rtl",
+        lang: "he",
+        mainTitle: "תודה שבחרת ב־",
+        subtitle: "נשמח לעמוד לשירותך גם בשאלה / תמיכה / טיסה / קניה / התקלה הבאה.",
+        ratingTitle: "נא לא לשכוח לדרג ⭐",
+        ratingQuestion: "איך הייתה החוויה?",
+        rateLabels: ["גרוע","פחות טוב","בסדר","טוב","מושלם!"],
+        supportTitle: "על מה הייתה התמיכה?",
+        topics: {
+          question: "❓ שאלה",
+          support: "🔧 תמיכה",
+          flight: "✈️ טיסה",
+          purchase: "🛒 קניה",
+          other: "••• אחר"
+        },
+        comment: "הערה אופציונלית למוקד התמיכה…",
+        submit: "שלח ב־WhatsApp ✓",
+        doneTitle: "תודה! ♥️",
+        doneText: "ההודעה מוכנה ב־WhatsApp.<br>נשמח לעמוד לשירותך גם בתקלה הבאה.",
+        again: "דירוג חדש",
+        messageHeader: "משוב שירות",
+        messageRating: "דירוג",
+        messageSupport: "סוג תמיכה",
+        messageComment: "הערה",
+        messageClosing: "✅ הכרטיס נסגר בהצלחה.\nתודה על השירות ♥️"
+      },
+
+      en: {
+        dir: "ltr",
+        lang: "en",
+        mainTitle: "Thank you for choosing",
+        subtitle: "We’ll be happy to help again with your next question / support request / flight / purchase / emergency.",
+        ratingTitle: "Don’t forget to rate ⭐",
+        ratingQuestion: "How was your experience?",
+        rateLabels: ["Bad","Could be better","OK","Good","Perfect!"],
+        supportTitle: "What did we help with?",
+        topics: {
+          question: "❓ Question",
+          support: "🔧 Support",
+          flight: "✈️ Flight",
+          purchase: "🛒 Purchase",
+          other: "••• Other"
+        },
+        comment: "Optional note to the support desk…",
+        submit: "SEND TO WHATSAPP ✓",
+        doneTitle: "Thank you! ♥️",
+        doneText: "Your message is ready in WhatsApp.<br>See you at the next incident.",
+        again: "New rating",
+        messageHeader: "SERVICE FEEDBACK",
+        messageRating: "Rating",
+        messageSupport: "Support",
+        messageComment: "Comment",
+        messageClosing: "✅ Ticket officially closed.\nThanks for the service ♥️"
+      },
+
+      ru: {
+        dir: "ltr",
+        lang: "ru",
+        mainTitle: "Спасибо, что выбрали",
+        subtitle: "Будем рады помочь снова: вопрос / поддержка / полёт / покупка / следующая проблема.",
+        ratingTitle: "Не забудьте оценить ⭐",
+        ratingQuestion: "Как вам сервис?",
+        rateLabels: ["Плохо","Можно лучше","Нормально","Хорошо","Идеально!"],
+        supportTitle: "С чем была помощь?",
+        topics: {
+          question: "❓ Вопрос",
+          support: "🔧 Поддержка",
+          flight: "✈️ Полёт",
+          purchase: "🛒 Покупка",
+          other: "••• Другое"
+        },
+        comment: "Комментарий для службы поддержки…",
+        submit: "ОТПРАВИТЬ В WHATSAPP ✓",
+        doneTitle: "Спасибо! ♥️",
+        doneText: "Сообщение подготовлено в WhatsApp.<br>До следующего инцидента.",
+        again: "Новая оценка",
+        messageHeader: "ОТЗЫВ О СЕРВИСЕ",
+        messageRating: "Оценка",
+        messageSupport: "Помощь",
+        messageComment: "Комментарий",
+        messageClosing: "✅ Тикет официально закрыт.\nСпасибо за сервис ♥️"
+      }
+    };
+
+    let currentLang = localStorage.getItem("ess_lang") || "he";
+    let rating = 5;
+
+    const ratingPage = document.getElementById("ratingPage");
+    const donePage = document.getElementById("donePage");
+    const stars = [...document.querySelectorAll(".star")];
+    const langButtons = [...document.querySelectorAll(".lang-btn")];
+
+    function applyLanguage(lang){
+      const t = translations[lang];
+      if (!t) return;
+
+      currentLang = lang;
+      localStorage.setItem("ess_lang", lang);
+
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+
+      document.getElementById("mainTitle").textContent = t.mainTitle;
+      document.getElementById("subtitle").textContent = t.subtitle;
+      document.getElementById("ratingTitle").textContent = t.ratingTitle;
+      document.getElementById("ratingQuestion").textContent = t.ratingQuestion;
+      document.getElementById("supportTitle").textContent = t.supportTitle;
+
+      document.getElementById("rate1").textContent = t.rateLabels[0];
+      document.getElementById("rate2").textContent = t.rateLabels[1];
+      document.getElementById("rate3").textContent = t.rateLabels[2];
+      document.getElementById("rate4").textContent = t.rateLabels[3];
+      document.getElementById("rate5").textContent = t.rateLabels[4];
+
+      document.getElementById("topicQuestion").textContent = t.topics.question;
+      document.getElementById("topicSupport").textContent = t.topics.support;
+      document.getElementById("topicFlight").textContent = t.topics.flight;
+      document.getElementById("topicPurchase").textContent = t.topics.purchase;
+      document.getElementById("topicOther").textContent = t.topics.other;
+
+      document.getElementById("comment").placeholder = t.comment;
+      document.getElementById("submit").textContent = t.submit;
+
+      document.getElementById("doneTitle").textContent = t.doneTitle;
+      document.getElementById("doneText").innerHTML = t.doneText;
+      document.getElementById("again").textContent = t.again;
+
+      langButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    langButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        applyLanguage(btn.dataset.lang);
+      });
+    });
+
+    function paintStars(){
+      stars.forEach((btn, i) => {
+        const active = i < rating;
+        btn.classList.toggle("active", active);
+        btn.textContent = active ? "★" : "☆";
+      });
+    }
+
+    paintStars();
+    applyLanguage(currentLang);
+
+    stars.forEach(btn => {
+      btn.addEventListener("click", () => {
+        rating = Number(btn.dataset.rating);
+        paintStars();
+      });
+    });
+
+    document.querySelectorAll(".chip").forEach(label => {
+      label.addEventListener("click", () => {
+        setTimeout(() => {
+          const input = label.querySelector("input");
+          label.classList.toggle("selected", input.checked);
+        }, 0);
+      });
+    });
+
+    function showDone(){
+      ratingPage.style.display = "none";
+      donePage.classList.add("show");
+    }
+
+    function showRating(){
+      donePage.classList.remove("show");
+      ratingPage.style.display = "block";
+    }
+
+    function buildMessage(){
+      const t = translations[currentLang];
+
+      const topicKeys = [
+        ...document.querySelectorAll(".chip input:checked")
+      ].map(item => item.dataset.topic);
+
+      const topicText = topicKeys.map(key => {
+        return t.topics[key].replace(/^[^\\p{L}\\p{N}]+/u, "").trim();
+      });
+
+      const comment = document.getElementById("comment").value.trim();
+
+      return `Elvin Support Services™
+${t.messageHeader}
+
+${t.messageRating}: ${"⭐".repeat(rating)} (${rating}/5)
+${topicText.length ? t.messageSupport + ": " + topicText.join(" / ") : ""}
+${comment ? t.messageComment + ": " + comment : ""}
+
+${t.messageClosing}`;
+    }
+
+    document.getElementById("submit").addEventListener("click", () => {
+      const message = buildMessage();
+
+      const whatsappURL =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+      /*
+        A website cannot verify that the person actually pressed Send inside
+        WhatsApp. We remember that WhatsApp was opened; when the user comes
+        back to the page, we show the clean heart screen.
+      */
+      sessionStorage.setItem("ess_whatsapp_opened", "1");
+
+      window.location.href = whatsappURL;
+    });
+
+    window.addEventListener("pageshow", () => {
+      if (sessionStorage.getItem("ess_whatsapp_opened") === "1") {
+        showDone();
+      }
+    });
+
+    window.addEventListener("focus", () => {
+      if (sessionStorage.getItem("ess_whatsapp_opened") === "1") {
+        showDone();
+      }
+    });
+
+    document.getElementById("again").addEventListener("click", () => {
+      sessionStorage.removeItem("ess_whatsapp_opened");
+      showRating();
+    });
+  </script>
+
+</body>
+</html>
